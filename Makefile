@@ -31,7 +31,7 @@ install_filebeat:
 check_port:
 	while [ "$$(kubectl get pod | grep ${PREFIX}-kibana | awk '{print $$3}')" != "Running" ]; \
 	do \
-		sleep 0.1; \
+		sleep 5; \
 		echo "Waiting for Pod up${PREFIX}-kibana."; \
 	done
 
@@ -41,7 +41,7 @@ port_forward:
 w8_service_run:
 	while [ "$$(kubectl get pod | grep ${PREFIX}-kibana | awk '{print $$2}' | tail -1)" != "1/1" ]; \
 	do \
-		sleep 1; \
+		sleep 5; \
 		echo "Waiting for servise up ${PREFIX}-kibana."; \
 	done
 
